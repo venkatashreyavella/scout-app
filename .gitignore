@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.venv/
+.streamlit/secrets.toml
+evals/results/
+.pytest_cache/
+.env
+.env.*
+!.env.example
