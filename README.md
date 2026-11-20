@@ -1,8 +1,14 @@
 # Scout — Smart Research & Action Agent
 
+**[Launch the live Streamlit app ↗](https://venkatashreyavella-scout-app-streamlit-app-vgjyml.streamlit.app/)**
+
 A native Streamlit application for technical research, cited recommendations, and checked cost calculations. The app accepts a research question, chooses tools, validates its answer, and exposes its execution trace.
 
 **Python · Streamlit · OpenAI native function calling and Structured Outputs · Pydantic · Tavily**
+
+![Scout on Streamlit Community Cloud: demo brief, checked calculation, and execution trace](assets/scout-demo.jpg)
+
+Demo mode works without API keys. Provider-backed live research requires server-side configuration.
 
 ## Run locally
 
@@ -15,7 +21,7 @@ python -m streamlit run streamlit_app.py
 
 The three demo examples work without API keys. Demo uses a scripted model and fixture search, with the real calculator, orchestrator, guardrails, schema checks, and trace renderer. Arbitrary questions require live mode.
 
-## Deploy to Streamlit Community Cloud
+## Deploy your own copy on Streamlit Community Cloud
 
 1. Sign in at [share.streamlit.io](https://share.streamlit.io/).
 2. Create an app from this repository: `venkatashreyavella/scout-app`.
@@ -24,7 +30,7 @@ The three demo examples work without API keys. Demo uses a scripted model and fi
 5. Leave secrets empty for a demo-only deployment. Deploy and choose an available `streamlit.app` subdomain.
 6. Confirm that sharing is public if you want anyone with the link to view the app.
 
-Streamlit's [official deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy) covers repository selection, Python settings, secrets, and app URLs. A local successful run or a GitHub push does not mean the cloud app has been published.
+Streamlit's [official deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy) covers repository selection, Python settings, secrets, and app URLs. The app linked above is already deployed; these steps also work for your own fork.
 
 ## Enable live research
 
@@ -120,7 +126,7 @@ requirements.txt         Pinned Python dependencies
 
 ## Verification and limitations
 
-Locally verified with Python 3.14 and the pinned dependencies: **28 tests passed**, including three interface tests, and **5/5 offline evals passed**. Syntax compilation passed. Live provider calls have not been tested because API keys were not supplied. A cloud URL must be verified after Community Cloud deployment.
+Locally verified with Python 3.14 and the pinned dependencies: **28 tests passed**, including three interface tests, and **5/5 offline evals passed**. Syntax compilation passed. The public Streamlit deployment was checked on **2026-11-20**: the interface loaded, and the Postgres demo returned a cited brief, the $300 annual calculation, and a completed execution trace. Live OpenAI/Tavily calls have not been verified.
 
 Citation checks prove that IDs were retrieved, not that a source entails the claim. Arithmetic provenance checks do not prove that the model selected the correct formula. Confidence is model-reported, not calibrated. Injection and contradiction detection are heuristic. Search excerpts can be stale or incomplete.
 
